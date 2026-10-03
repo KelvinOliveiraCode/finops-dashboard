@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Relatorio de custo - fatura ficticia</title>
+<style>
+body { font-family: sans-serif; max-width: 900px; margin: 2em auto; padding: 0 1em; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+th, td { border: 1px solid #999; padding: 0.4em 0.8em; text-align: left; }
+th { background: #eee; }
+.projecao { background: #d1ecf1; padding: 1em; }
+</style>
+</head>
+<body>
+<h1>Relatorio de custo - fatura ficticia</h1>
+
+<h2>Total por mes</h2>
+<table>
+<tr><th>Mes</th><th>Total</th></tr>
+<tr><td>2026-04</td><td>1984.26</td></tr><tr><td>2026-05</td><td>2020.70</td></tr><tr><td>2026-06</td><td>2102.25</td></tr><tr style="background:#f8d7da"><td>2026-07</td><td>2847.81</td></tr><tr><td>2026-08</td><td>2769.72</td></tr><tr style="background:#f8d7da"><td>2026-09</td><td>3782.44</td></tr>
+</table>
+
+<h2>Total por projeto</h2>
+<table>
+<tr><th>Projeto</th><th>Total</th></tr>
+<tr><td>atlas</td><td>8467.81</td></tr><tr><td>boreas</td><td>4565.24</td></tr><tr><td>cais</td><td>2474.13</td></tr>
+</table>
+
+<h2>Anomalias detectadas</h2>
+<table>
+<tr><th>Mes</th><th>Servico</th><th>Projeto</th><th>Valor</th><th>Metodo</th><th>Severidade</th></tr>
+<tr><td>2026-07</td><td>armazenamento-frio</td><td>atlas</td><td>799.93</td><td>iqr</td><td>alta</td></tr>
+<tr><td>2026-09</td><td>compute-lote</td><td>atlas</td><td>1148.71</td><td>iqr</td><td>alta</td></tr>
+<tr><td>2026-07</td><td>armazenamento-frio</td><td>atlas</td><td>799.93</td><td>desvio</td><td>alta</td></tr>
+<tr><td>2026-09</td><td>compute-lote</td><td>atlas</td><td>1148.71</td><td>desvio</td><td>alta</td></tr>
+<tr><td>2026-07</td><td>armazenamento-frio</td><td>atlas</td><td>799.93</td><td>nivel</td><td>alta</td></tr>
+<tr><td>2026-09</td><td>trafego-saida</td><td>boreas</td><td>750.64</td><td>nivel</td><td>alta</td></tr>
+</table>
+
+<h2>Projecao fim de mes</h2>
+<div class="projecao">
+<p><strong>2026-10:</strong> 4067.95
+(intervalo 3810.85 a 4325.06)</p>
+</div>
+
+<p><small>Valores ficticios. Gerado localmente, sem acesso a nuvem.</small></p>
+</body>
+</html>
+
