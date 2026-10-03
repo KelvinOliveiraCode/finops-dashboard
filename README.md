@@ -57,7 +57,7 @@ ANOMALIAS: 6
 Rodar sem instalar (útil para conferência rápida):
 
 ```powershell
-$env:PYTHONPATH="C:\Users\Kelvin\Desktop\portfolio-24\finops-dashboard\src"; python -m finops resumo dados/cobranca-ficticia.csv
+$env:PYTHONPATH="$PWD\src"; python -m finops resumo dados/cobranca-ficticia.csv
 ```
 
 O relatório HTML:
@@ -216,7 +216,7 @@ ANOMALIAS: 6
 Run without installing (quick check):
 
 ```powershell
-$env:PYTHONPATH="C:\Users\Kelvin\Desktop\portfolio-24\finops-dashboard\src"; python -m finops resumo dados/cobranca-ficticia.csv
+$env:PYTHONPATH="$PWD\src"; python -m finops resumo dados/cobranca-ficticia.csv
 ```
 
 HTML report:
