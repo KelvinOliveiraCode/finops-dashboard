@@ -38,13 +38,22 @@ jobs:
         run: python tools/verificar_aceite.py
 
       - name: O CLI sinaliza anomalia com saida diferente de zero
+        # Duas coisas do runner do GitHub brigam com este passo, e as duas
+        # precisam ser neutralizadas:
+        # 1) no pwsh 7.4+, `PSNativeCommandUseErrorActionPreference` faz um
+        #    comando nativo com codigo != 0 virar erro terminante e abortar o
+        #    passo antes do `if` que confere o codigo;
+        # 2) o runner fecha o passo com `exit $LASTEXITCODE`, entao o codigo 1
+        #    esperado da CLI viraria o codigo do passo.
         run: |
+          $PSNativeCommandUseErrorActionPreference = $false
           python -m finops resumo dados/cobranca-ficticia.csv
           if ($LASTEXITCODE -eq 0) {
             Write-Error "havendo anomalia alta, o CLI deveria sair com 1"
             exit 1
           }
           Write-Output "ok: anomalia sinalizada com codigo diferente de zero"
+          exit 0
 
       - name: O relatorio HTML e gerado
         run: |
