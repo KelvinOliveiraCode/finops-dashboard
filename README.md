@@ -1,5 +1,19 @@
 # finops-dashboard
 
+<div align="center">
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/tests-59%20passing-brightgreen?style=flat-square" alt="Tests">
+  <img src="https://img.shields.io/badge/coverage-93%25-green?style=flat-square" alt="Coverage">
+  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/platform-Windows-blue?style=flat-square" alt="Windows">
+  <img src="https://img.shields.io/badge/deps-zero%20deps-brightgreen?style=flat-square" alt="Deps">
+</p>
+
+</div>
+
+
 Análise local de fatura fictícia de nuvem: importa CSV, atribui custo por projeto, detecta gasto anômalo e projeta o custo de fim de mês.
 
 Local analysis of a fictitious cloud bill: import the CSV, attribute cost per project, detect anomalous spend, and project month-end cost.
