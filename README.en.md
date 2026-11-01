@@ -1,118 +1,77 @@
 # finops-dashboard
 
-<div align="center">
-
 **English** · [Português (Brasil)](README.md)
 
-</div>
-
-[![Python 3](https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/) [![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn)](https://scikit-learn.org/) [![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas)](https://pandas.pydata.org/) [![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest)](https://docs.pytest.org/) [![MIT License](https://img.shields.io/badge/License-MIT-f4c430?style=flat-square)](LICENSE)
-
-### Analise de fatura de nuvem ficticia: atribuicao de custo, anomalia por IQR e projecao
-
----
+[![Python 3](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](#) [![PyYAML](https://img.shields.io/badge/PyYAML-only%20dep-3776AB?style=flat-square)](#) [![pytest](https://img.shields.io/badge/pytest-59%20tests-0A9EDC?style=flat-square&logo=pytest)](#) [![MIT License](https://img.shields.io/badge/License-MIT-f4c430?style=flat-square)](LICENSE)
 
 ## What it is
 
-Analise de fatura de nuvem ficticia: atribuicao de custo, anomalia por IQR e projecao
+**A FinOps dashboard**: it imports simulated cloud invoices (CSV/JSON), attributes costs per team/service with rate allocation (preserves the total), detects anomalies (IQR, standard deviation, level-based), forecasts next month's spending and generates an HTML report. It is an educational FinOps lab in Python.
 
----
+## Status
 
-## Quick Start
+An educational lab, working and tested (59 tests).
 
-```bash
-# Clone and enter
-git clone https://github.com/KelvinOliveiraCode/<repo>.git
-cd <repo>
+## Features
 
-# Install dependencies
-# No requirements.txt detected
+- **Importer** (`importador.py`): `carregar` → `Gasto`, `meses`, `total_por_mes`.
+- **Attribution** (`atribuicao.py`): `atribuir` (per team), `rateio` (preserves total), `por_equipe`.
+- **Anomalies** (`anomalias.py`): `detectar_iqr`, `detectar_desvio`, `detectar_nivel` → `Anomalia` (month, category, value, method).
+- **Forecast** (`projecao.py`): `projetar` (series → `Projecao`), `projetar_total`.
+- **Report** (`relatorio.py`): `gerar` (HTML) and `salvar`.
+- **CLI** (`finops`): `resumo`, `relatorio`, `projecao`.
 
-# Run the project
-python main.py
+## Architecture
 
-# Run tests
-pytest
+A `finops` package with `importador`, `atribuicao`, `anomalias`, `projecao`, `relatorio` and `cli`.
+
+## Stack
+
+- Python ≥ 3.10, PyYAML ≥ 6.0
+- pytest (dev)
+
+## Repository layout
+
+```
+finops-dashboard/
+├── src/finops/      # importador · atribuicao · anomalias · projecao · relatorio · cli
+├── dados/ · docs/ · exemplos/
+├── tests/           # 59 tests
+└── LICENSE          # MIT
 ```
 
-## How it works
+## Prerequisites and installation
 
-Estrutura limpa e modular com separação de responsabilidades.
+```bash
+pip install -e .
+```
 
----
+## How to run
 
-## Capabilities
+```bash
+finops <subcmd> dados/   # resumo|relatorio|projecao
+```
 
-| Capacidade | Descrição |
-|------------|-------------|
-| Carregamento de Dados | Auto-download do TensorFlow creditcard.csv (284k transações) com cache local |
-| EDA e Visualização | Distribuição de classes, histogramas de Amount, heatmaps de correlação (matplotlib/seaborn) |
-| Pré-processamento | RobustScaler em Amount/Time, split estratificado, remoção de duplicatas |
-| Balanceamento | SMOTE oversampling (fallback: class_weight="balanced") |
-| Modelagem | LogisticRegression, RandomForest, ExtraTrees com RandomizedSearchCV (StratifiedKFold) |
-| Métricas | Accuracy, Precision, Recall, F1, ROC AUC, Specificity, Confusion Matrix |
-| Seleção | Score ponderado: Recall 40% + F1 30% + Precision 20% + Accuracy 10% |
-| Persistência | Serialização joblib para modelo, scaler e resultados completos |
+## Tests and quality
 
+```bash
+PYTHONPATH=src python -m pytest tests/   # 59 passed
+```
 
----
+## Technical decisions
 
+- Rate allocation preserves the total: attribution by team without inventing money.
+- 3 anomaly-detection methods (IQR, standard deviation, level): covers different spending patterns.
 
+## Known limitations
 
----
+- Fictitious/example invoices — no AWS CUR, Azure EA or GCP BQ integration.
+- Simple linear forecast.
 
-## FAQ
+## Development process
 
-<details>
-<summary><strong>What is this project?</strong></summary>
+An individual project by Kelvin Oliveira, built with orchestrated AI agents and reviewed by the author.
 
-A Python study/project demonstrating core concepts.
+## License and author
 
-</details>
-
-<details>
-<summary><strong>How do I run it?</strong></summary>
-
-See [Quick Start](#quick-start) for copy-paste commands.
-
-</details>
-
-<details>
-<summary><strong>Are there tests?</strong></summary>
-
-No automated tests in this repository.
-
-</details>
-
-<details>
-<summary><strong>Can I use this in production?</strong></summary>
-
-This is a **study/portfolio project**. Review and harden (auth, persistence, monitoring, etc.) before production use.
-
-</details>
-
-
-
----
-
-## Documentation
-
-- **Source Code** ,  Browse the `src/` directory for implementation details
-- **API Reference** ,  Inline docstrings + type hints
-- **Architecture Diagram** ,  See [architecture.mermaid](docs/architecture.mermaid) (if present)
-- **Changelog** ,  [CHANGELOG.md](CHANGELOG.md) (if present)
-- **Contributing** ,  [CONTRIBUTING.md](CONTRIBUTING.md) (if present)
-
-## License
-
-[MIT](LICENSE) ,  Kelvin Oliveira
-
----
-
-<div align="center">
-
-**Built with** · Python 3 + scikit-learn + pandas
-
-**Author** · [Kelvin Oliveira](https://github.com/KelvinOliveiraCode) · [Portfolio](https://kelvinoliveiracode.github.io/portfolio/)
-
-</div>
+MIT — Copyright (c) 2026 Kelvin Rebelo de Oliveira. Author: [Kelvin Oliveira](https://github.com/KelvinOliveiraCode) · [Portfolio](https://kelvinoliveiracode.github.io/portfolio/)
